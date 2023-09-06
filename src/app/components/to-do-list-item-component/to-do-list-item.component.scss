@@ -1,0 +1,13 @@
+mat-list-item {
+  width: 90%;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 7px;
+
+  app-button {
+    float: right;
+    margin: 1px;
+  }
+}

@@ -1,18 +1,27 @@
-<h1>ToDo List</h1>
+<div class="todo-container">
+  <h1>ToDo List</h1>
+  <mat-list class="mat-list">
 
-<ul>
-  <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    <button>Delete</button>
-  </li>
-  <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-    <button>Delete</button>
-  </li>
-  <li>Contrary to popular belief, Lorem Ipsum is not simply random text
-    <button>Delete</button>
-  </li>
-</ul>
+    <ng-container [ngSwitch]="isLoading">
+      <mat-spinner *ngSwitchCase="true"></mat-spinner>
 
-<div class="new-todo">
-  <input placeholder="Add new your todo"/>
-  <button>Add task</button>
+      <ng-container *ngSwitchCase="false">
+        <ng-container *ngFor="let item of todoListItems">
+          <app-to-do-list-item [item]="item" (onDeleteItem)="deleteItem($event)"></app-to-do-list-item>
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+
+
+  </mat-list>
+
+  <mat-form-field>
+    <mat-label>Add your new task</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <button [disabled]="isDisabledButton" matSuffix mat-raised-button aria-label="Add" class="button button-add"
+    (click)="addItem()">
+      Add
+    </button>
+  </mat-form-field>
 </div>
