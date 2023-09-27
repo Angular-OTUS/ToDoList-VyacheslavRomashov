@@ -21,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     TodoListComponent,
     ToDoListItemComponent,
-    ToDoListItemComponent
+    ToDoListItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +35,9 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

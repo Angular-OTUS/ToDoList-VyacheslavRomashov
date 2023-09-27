@@ -7,7 +7,7 @@
 
       <ng-container *ngSwitchCase="false">
         <ng-container *ngFor="let item of todoListItems">
-          <app-to-do-list-item [item]="item" (onDeleteItem)="deleteItem($event)"></app-to-do-list-item>
+          <app-to-do-list-item [item]="item" (deleteItemEvent)="deleteItem($event)"></app-to-do-list-item>
         </ng-container>
       </ng-container>
 

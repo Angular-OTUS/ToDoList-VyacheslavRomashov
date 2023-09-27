@@ -18,13 +18,19 @@ export class TodoListComponent implements OnInit{
     {id: 3, text: 'Lorem Ipsum 3'},
   ]
 
-  public isLoading: boolean = true;
+  public isLoading = true;
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.isLoading = false
+    }, 500)
+  }
 
   get isDisabledButton() {
     return this.value === '';
   }
 
-  deleteItem(id: Number) {
+  deleteItem(id: number) {
     this.todoListItems = this.todoListItems.filter((item:ToDoListItem) => item.id !== id);
   }
 
@@ -33,9 +39,4 @@ export class TodoListComponent implements OnInit{
     this.todoListItems.push({id: max +1, text: this.value});
   }
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false
-    }, 500)
-  }
 }
