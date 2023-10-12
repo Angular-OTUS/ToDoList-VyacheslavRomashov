@@ -1,5 +1,4 @@
 mat-list-item {
-  width: 90%;
   height: 40px;
   border: 1px solid gray;
   border-radius: 5px;
@@ -10,4 +9,7 @@ mat-list-item {
     float: right;
     margin: 1px;
   }
+}
+.selected {
+  background-color: rgba(56,156,104,0.18);
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { ToDoListItem } from '../models';
 
 @Component({
@@ -9,9 +9,23 @@ import { ToDoListItem } from '../models';
 export class ToDoListItemComponent {
 
   @Input() public item!: ToDoListItem;
-  @Output() deleteItemEvent: EventEmitter<number> = new EventEmitter<number>()
+
+  @Input() public selectedItemId?: number;
+
+  @Output() deleteItemEvent: EventEmitter<number> = new EventEmitter<number>();
+
+  @Output() itemSelected: EventEmitter<number> = new EventEmitter<number>();
 
   deleteItem(id: number) {
     this.deleteItemEvent.emit(id)
+  }
+
+  selectItem(id: number) {
+    this.itemSelected.emit(id)
+  }
+
+  @HostBinding('style.selected')
+  get isItemSelected() {
+    return this.item.id === this.selectedItemId;
   }
 }

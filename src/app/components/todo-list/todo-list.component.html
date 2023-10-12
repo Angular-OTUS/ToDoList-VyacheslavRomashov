@@ -1,27 +1,48 @@
-<div class="todo-container">
-  <h1>ToDo List</h1>
-  <mat-list class="mat-list">
+<div class="flex">
+  <div class="todo-container">
+    <h1>ToDo List</h1>
+    <mat-list class="mat-list">
 
-    <ng-container [ngSwitch]="isLoading">
-      <mat-spinner *ngSwitchCase="true"></mat-spinner>
+      <ng-container [ngSwitch]="isLoading">
+        <mat-spinner *ngSwitchCase="true"></mat-spinner>
 
-      <ng-container *ngSwitchCase="false">
-        <ng-container *ngFor="let item of todoListItems">
-          <app-to-do-list-item [item]="item" (deleteItemEvent)="deleteItem($event)"></app-to-do-list-item>
+        <ng-container *ngSwitchCase="false">
+          <ng-container *ngFor="let item of todoListItems">
+            <app-to-do-list-item
+              [item]="item"
+              (itemSelected)="onItemSelected($event)"
+              (deleteItemEvent)="deleteItem($event)"
+              [selectedItemId]="selectedItemId">
+            </app-to-do-list-item>
+          </ng-container>
         </ng-container>
+
       </ng-container>
 
-    </ng-container>
 
+    </mat-list>
 
-  </mat-list>
+    <mat-form-field>
+      <mat-label>Add your new task</mat-label>
+      <input matInput type="text" [(ngModel)]="value">
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Add your new task</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    <button [disabled]="isDisabledButton" matSuffix mat-raised-button aria-label="Add" class="button button-add"
-    (click)="addItem()">
-      Add
-    </button>
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Add your new description</mat-label>
+      <textarea matInput type="text" [(ngModel)]="description"></textarea>
+      <button [disabled]="isDisabledButton" matSuffix mat-raised-button aria-label="Add" class="button button-add"
+              (click)="addItem()">
+        Add
+      </button>
+    </mat-form-field>
+
+  </div>
+
+  <div class="todo-container">
+    <div class="description" *ngIf="isNeedDisplayDescription">
+      <b>Описание: </b>
+       {{getSelectedItemDescription()}}
+    </div>
+  </div>
 </div>
+

@@ -4,7 +4,7 @@
 }
 
 mat-form-field {
-  width: 90%;
+  width: 100%;
   border-radius: 5px;
   button {
     margin-right: 7px !important;
@@ -15,3 +15,10 @@ mat-spinner {
   left: 40%;
 }
 
+.flex {
+  display: flex;
+}
+
+.description {
+  padding-top: 55px;
+}
