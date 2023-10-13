@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ToDoListItem, ToDoListItems } from '../models';
+import { ToDoListItem } from '../models';
+import { TodoService } from '../../services/todo.services';
+import { ToastService } from '../../services/toast.service';
 
 
 
@@ -16,18 +18,17 @@ export class TodoListComponent implements OnInit{
 
   public selectedItemId?: number;
 
-  public todoListItems: ToDoListItems = [
-    {id: 1, text: 'Lorem Ipsum 1', description: 'Lorem Ipsum description 1'},
-    {id: 2, text: 'Lorem Ipsum 2', description: 'Lorem Ipsum description 2'},
-    {id: 3, text: 'Lorem Ipsum 3', description: 'Lorem Ipsum description 3'},
-  ]
-
   public isLoading = true;
+
+  constructor(public todoService: TodoService,
+              public toastService: ToastService) {
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.isLoading = false
     }, 500)
+    this.toastService.showToast(this.todoService.todoListItems.map((item) => item.text))
   }
 
   get isDisabledButton() {
@@ -42,18 +43,13 @@ export class TodoListComponent implements OnInit{
     this.selectedItemId = value;
   }
 
+  onItemEdited(item: ToDoListItem) {
+    this.todoService.updateItem(item)
+  }
+
   getSelectedItemDescription() {
-    const currentItem = this.todoListItems.find((item) => item.id === this.selectedItemId)
+    const currentItem = this.todoService.todoListItems.find((item) => item.id === this.selectedItemId)
     return currentItem?.description ?? ''
-  }
-
-  deleteItem(id: number) {
-    this.todoListItems = this.todoListItems.filter((item:ToDoListItem) => item.id !== id);
-  }
-
-  addItem() {
-    const max = Math.max.apply(0, this.todoListItems.map(item => item.id));
-    this.todoListItems.push({id: max +1, text: this.value, description: this.description});
   }
 
 }

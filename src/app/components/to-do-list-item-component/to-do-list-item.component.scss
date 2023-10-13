@@ -13,3 +13,14 @@ mat-list-item {
 .selected {
   background-color: rgba(56,156,104,0.18);
 }
+
+.editInput {
+  width: 50%;
+  border: unset;
+  height: 40px;
+  background-color: var(--mdc-filled-text-field-container-color);
+}
+
+.editButton {
+  margin-left: 5px;
+}

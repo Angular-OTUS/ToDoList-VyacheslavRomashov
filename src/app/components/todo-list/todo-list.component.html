@@ -7,11 +7,12 @@
         <mat-spinner *ngSwitchCase="true"></mat-spinner>
 
         <ng-container *ngSwitchCase="false">
-          <ng-container *ngFor="let item of todoListItems">
+          <ng-container *ngFor="let item of todoService.todoListItems">
             <app-to-do-list-item
               [item]="item"
               (itemSelected)="onItemSelected($event)"
-              (deleteItemEvent)="deleteItem($event)"
+              (itemEdited)="onItemEdited($event)"
+              (deleteItemEvent)="todoService.deleteItem($event)"
               [selectedItemId]="selectedItemId">
             </app-to-do-list-item>
           </ng-container>
@@ -31,7 +32,7 @@
       <mat-label>Add your new description</mat-label>
       <textarea matInput type="text" [(ngModel)]="description"></textarea>
       <button [disabled]="isDisabledButton" matSuffix mat-raised-button aria-label="Add" class="button button-add"
-              (click)="addItem()">
+              (click)="todoService.addItem(value, description)">
         Add
       </button>
     </mat-form-field>
@@ -46,3 +47,4 @@
   </div>
 </div>
 
+<app-toast></app-toast>

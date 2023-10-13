@@ -16,6 +16,10 @@ export class ToDoListItemComponent {
 
   @Output() itemSelected: EventEmitter<number> = new EventEmitter<number>();
 
+  @Output() itemEdited: EventEmitter<ToDoListItem> = new EventEmitter<ToDoListItem>();
+
+  onEdit = false;
+
   deleteItem(id: number) {
     this.deleteItemEvent.emit(id)
   }
@@ -27,5 +31,14 @@ export class ToDoListItemComponent {
   @HostBinding('style.selected')
   get isItemSelected() {
     return this.item.id === this.selectedItemId;
+  }
+
+  onDblClick() {
+    this.onEdit = true;
+  }
+
+  onSaveItem() {
+    this.itemEdited.next(this.item);
+    this.onEdit = false;
   }
 }
