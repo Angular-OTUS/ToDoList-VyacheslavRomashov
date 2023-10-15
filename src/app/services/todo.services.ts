@@ -15,9 +15,14 @@ export class TodoService {
   public addItem(value: string, description: string) {
     const max = Math.max.apply(0, this.todoListItems.map(item => item.id));
     this.todoListItems.push({id: max +1, text: value, description: description});
+    this.toastService.showToast([description])
   }
 
   deleteItem(id: number) {
+    const deletedItem = this.todoListItems.find((item:ToDoListItem) => item.id === id);
+    if (deletedItem) {
+      this.toastService.showToast([deletedItem.description])
+    }
     this.todoListItems = this.todoListItems.filter((item:ToDoListItem) => item.id !== id);
   }
 

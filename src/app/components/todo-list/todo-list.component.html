@@ -32,6 +32,7 @@
       <mat-label>Add your new description</mat-label>
       <textarea matInput type="text" [(ngModel)]="description"></textarea>
       <button [disabled]="isDisabledButton" matSuffix mat-raised-button aria-label="Add" class="button button-add"
+              [appTooltip]="'Add'"
               (click)="todoService.addItem(value, description)">
         Add
       </button>
