@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ToDoListItem } from '../models';
+import { TodoAdd, ToDoListItem, ToDoListItems } from '../models';
 import { TodoService } from '../../services/todo.services';
 import { ToastService } from '../../services/toast.service';
-
+import { ApiService } from '../../services/api.service';
+import { map } from 'rxjs';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { ToastService } from '../../services/toast.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 
-export class TodoListComponent implements OnInit{
+export class TodoListComponent implements OnInit {
   public value = '';
 
   public description = '';
@@ -20,19 +21,25 @@ export class TodoListComponent implements OnInit{
 
   public isLoading = true;
 
+  allItems: ToDoListItems = [];
+
   constructor(public todoService: TodoService,
-              public toastService: ToastService) {
+              public toastService: ToastService,
+              private apiService: ApiService) {
   }
 
   ngOnInit(): void {
+    this.getAllItems()
     setTimeout(() => {
       this.isLoading = false
     }, 500)
     this.toastService.showToast(this.todoService.todoListItems.map((item) => item.text))
   }
 
-  get isDisabledButton() {
-    return this.value === '';
+  getAllItems() {
+    this.apiService.getItems().subscribe(items => {
+      this.allItems = items;
+    })
   }
 
   get isNeedDisplayDescription() {
@@ -44,7 +51,10 @@ export class TodoListComponent implements OnInit{
   }
 
   onItemEdited(item: ToDoListItem) {
-    this.todoService.updateItem(item)
+    this.apiService.putItem(item).subscribe(data => {
+      this.getAllItems();
+      this.toastService.showToast([data.text])
+    })
   }
 
   getSelectedItemDescription() {
@@ -52,4 +62,24 @@ export class TodoListComponent implements OnInit{
     return currentItem?.description ?? ''
   }
 
+  statusSelected(status: string | null) {
+    this.apiService.getItems().pipe(
+      map( results => results.filter(r => status ? r.status === status : r) ),
+    ).subscribe((data => {
+      this.allItems = data;
+    }));
+  }
+
+  addItem(event: TodoAdd) {
+    this.apiService.postItem(event).subscribe((data => {
+      this.getAllItems();
+      this.toastService.showToast([data.text])
+    }))
+  }
+
+  deleteItem(event: number) {
+    this.apiService.deleteItem(event).subscribe(() => {
+      this.getAllItems();
+    })
+  }
 }

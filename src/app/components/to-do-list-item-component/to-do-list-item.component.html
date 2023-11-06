@@ -1,9 +1,11 @@
 <mat-list-item (click)="selectItem(item.id)" [class.selected]="isItemSelected" [appTooltip]="item.description">
-  <span *ngIf="!onEdit" (dblclick)="onDblClick()">{{item.text}}</span>
-  <ng-container *ngIf="onEdit">
-    <input class="editInput" [(ngModel)]="item.text" placeholder="Введите новое наименование">
-    <button mat-raised-button class="editButton" color="primary" (click)="onSaveItem()" [appTooltip]="'Save'">Save</button>
-  </ng-container>
+    <mat-checkbox (change)="changeStatus($event)" [checked]="isChecked"></mat-checkbox>
+    <span *ngIf="!onEdit" (dblclick)="onDblClick()">{{item.text}}</span>
+    <ng-container *ngIf="onEdit">
+        <input class="editInput" [(ngModel)]="item.text" placeholder="Введите новое наименование">
+        <button mat-raised-button class="editButton" color="primary" (click)="onSaveItem()" [appTooltip]="'Save'">Save
+        </button>
+    </ng-container>
 
-  <app-button class="button button-delete" (click)="deleteItem(item.id)">Delete</app-button>
+    <app-button class="button button-delete" (click)="deleteItem(item.id)">Delete</app-button>
 </mat-list-item>

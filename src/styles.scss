@@ -17,3 +17,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
+mat-form-field {
+  width: 100%;
+  border-radius: 5px;
+  button {
+    margin-right: 7px !important;
+  }
+}

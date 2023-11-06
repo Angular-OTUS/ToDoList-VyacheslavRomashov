@@ -1,5 +1,7 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { ToDoListItem } from '../models';
+import { TodoItemStatus, ToDoListItem } from '../models';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-to-do-list-item',
@@ -19,6 +21,13 @@ export class ToDoListItemComponent {
   @Output() itemEdited: EventEmitter<ToDoListItem> = new EventEmitter<ToDoListItem>();
 
   onEdit = false;
+
+  get isChecked() {
+    return this.item.status === TodoItemStatus.COMPLETED
+  }
+
+  constructor(private apiService: ApiService) {
+  }
 
   deleteItem(id: number) {
     this.deleteItemEvent.emit(id)
@@ -40,5 +49,12 @@ export class ToDoListItemComponent {
   onSaveItem() {
     this.itemEdited.next(this.item);
     this.onEdit = false;
+  }
+
+  changeStatus(event: MatCheckboxChange) {
+    const status = event.checked ? TodoItemStatus.COMPLETED : TodoItemStatus.IN_PROGRESS;
+    this.apiService.changeStatus(this.item.id, status).subscribe((data => {
+      data.status = status;
+    }));
   }
 }

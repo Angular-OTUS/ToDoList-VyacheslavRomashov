@@ -31,7 +31,8 @@
             "style": "kebab-case"
           }
         ],
-        "comma-dangle": [2, "always-multiline"]
+        "comma-dangle": [2, "always-multiline"],
+        "@typescript-eslint/no-non-null-assertion": "off"
       }
     },
     {

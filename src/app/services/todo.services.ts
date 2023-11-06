@@ -7,14 +7,14 @@ export class TodoService {
   constructor(private toastService: ToastService) {
   }
   public todoListItems: ToDoListItems = [
-    {id: 1, text: 'Lorem Ipsum 1', description: 'Lorem Ipsum description 1'},
-    {id: 2, text: 'Lorem Ipsum 2', description: 'Lorem Ipsum description 2'},
-    {id: 3, text: 'Lorem Ipsum 3', description: 'Lorem Ipsum description 3'},
+    {id: 1, text: 'Lorem Ipsum 1', description: 'Lorem Ipsum description 1', status: null},
+    {id: 2, text: 'Lorem Ipsum 2', description: 'Lorem Ipsum description 2', status: null},
+    {id: 3, text: 'Lorem Ipsum 3', description: 'Lorem Ipsum description 3', status: null},
   ]
 
   public addItem(value: string, description: string) {
     const max = Math.max.apply(0, this.todoListItems.map(item => item.id));
-    this.todoListItems.push({id: max +1, text: value, description: description});
+    this.todoListItems.push({id: max +1, text: value, description: description, status: null});
     this.toastService.showToast([description])
   }
 
