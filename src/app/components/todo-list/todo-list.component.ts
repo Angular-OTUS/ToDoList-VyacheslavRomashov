@@ -3,8 +3,6 @@ import { TodoAdd, ToDoListItem, ToDoListItems } from '../models';
 import { TodoService } from '../../services/todo.services';
 import { ToastService } from '../../services/toast.service';
 import { ApiService } from '../../services/api.service';
-import { map } from 'rxjs';
-
 
 @Component({
   selector: 'app-todo-list',
@@ -14,8 +12,6 @@ import { map } from 'rxjs';
 
 export class TodoListComponent implements OnInit {
   public value = '';
-
-  public description = '';
 
   public selectedItemId?: number;
 
@@ -29,17 +25,15 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllItems()
+    this.todoService.getAllItems();
+    this.todoService.allItems$.subscribe((items) => {
+      this.allItems = items;
+      this.toastService.showToast(this.allItems.map((item) => item.text))
+    })
     setTimeout(() => {
       this.isLoading = false
     }, 500)
-    this.toastService.showToast(this.todoService.todoListItems.map((item) => item.text))
-  }
 
-  getAllItems() {
-    this.apiService.getItems().subscribe(items => {
-      this.allItems = items;
-    })
   }
 
   get isNeedDisplayDescription() {
@@ -51,35 +45,23 @@ export class TodoListComponent implements OnInit {
   }
 
   onItemEdited(item: ToDoListItem) {
-    this.apiService.putItem(item).subscribe(data => {
-      this.getAllItems();
-      this.toastService.showToast([data.text])
-    })
+    this.todoService.editItem(item);
   }
 
   getSelectedItemDescription() {
-    const currentItem = this.todoService.todoListItems.find((item) => item.id === this.selectedItemId)
+    const currentItem = this.allItems.find((item) => item.id === this.selectedItemId)
     return currentItem?.description ?? ''
   }
 
   statusSelected(status: string | null) {
-    this.apiService.getItems().pipe(
-      map( results => results.filter(r => status ? r.status === status : r) ),
-    ).subscribe((data => {
-      this.allItems = data;
-    }));
+    this.todoService.filterList(status)
   }
 
   addItem(event: TodoAdd) {
-    this.apiService.postItem(event).subscribe((data => {
-      this.getAllItems();
-      this.toastService.showToast([data.text])
-    }))
+   this.todoService.addItem(event);
   }
 
   deleteItem(event: number) {
-    this.apiService.deleteItem(event).subscribe(() => {
-      this.getAllItems();
-    })
+    this.todoService.deleteItem(event);
   }
 }

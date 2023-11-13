@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
-import { TodoAdd } from '../models';
+import { TodoAdd, TodoItemStatus } from '../models';
 
 
 @Component({
@@ -29,6 +29,7 @@ export class TodoCreateItemComponent {
     const data: TodoAdd = {
       text: this.addForm.value['text']!,
       description: this.addForm.value['description']!,
+      status: TodoItemStatus.IN_PROGRESS,
     };
     this.addItemEvent.emit(data);
   }

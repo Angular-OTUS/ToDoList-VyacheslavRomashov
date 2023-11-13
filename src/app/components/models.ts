@@ -7,7 +7,7 @@ export type ToDoListItem = {
 
 export type ToDoListItems = Array<ToDoListItem>
 
-export type TodoAdd = Pick<ToDoListItem, "text" | "description">;
+export type TodoAdd = Omit<ToDoListItem, "id">;
 
 export enum TodoItemStatus {
   IN_PROGRESS = 'InProgress',
