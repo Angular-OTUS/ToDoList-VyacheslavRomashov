@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoAdd, ToDoListItem, ToDoListItems } from '../models';
 import { TodoService } from '../../services/todo.services';
 import { ToastService } from '../../services/toast.service';
-import { ApiService } from '../../services/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -21,7 +21,8 @@ export class TodoListComponent implements OnInit {
 
   constructor(public todoService: TodoService,
               public toastService: ToastService,
-              private apiService: ApiService) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,21 +37,8 @@ export class TodoListComponent implements OnInit {
 
   }
 
-  get isNeedDisplayDescription() {
-    return this.selectedItemId !== null;
-  }
-
-  onItemSelected(value: number) {
-    this.selectedItemId = value;
-  }
-
   onItemEdited(item: ToDoListItem) {
     this.todoService.editItem(item);
-  }
-
-  getSelectedItemDescription() {
-    const currentItem = this.allItems.find((item) => item.id === this.selectedItemId)
-    return currentItem?.description ?? ''
   }
 
   statusSelected(status: string | null) {
@@ -63,5 +51,10 @@ export class TodoListComponent implements OnInit {
 
   deleteItem(event: number) {
     this.todoService.deleteItem(event);
+  }
+
+  onItemClick(item: ToDoListItem) {
+    this.selectedItemId = item.id;
+    this.router.navigate(['/tasks', item.id]);
   }
 }

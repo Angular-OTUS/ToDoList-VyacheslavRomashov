@@ -3,6 +3,11 @@
   margin-left: 10px;
 }
 
+.backlog {
+  padding: 0 10px;
+  background-color: azure;
+}
+
 mat-form-field {
   width: 100%;
   border-radius: 5px;
@@ -19,6 +24,3 @@ mat-spinner {
   display: flex;
 }
 
-.description {
-  padding-top: 55px;
-}

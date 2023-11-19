@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { TodoItemStatus, ToDoListItem } from '../models';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ApiService } from '../../services/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-to-do-list-item',
@@ -16,8 +17,6 @@ export class ToDoListItemComponent {
 
   @Output() deleteItemEvent: EventEmitter<number> = new EventEmitter<number>();
 
-  @Output() itemSelected: EventEmitter<number> = new EventEmitter<number>();
-
   @Output() itemEdited: EventEmitter<ToDoListItem> = new EventEmitter<ToDoListItem>();
 
   onEdit = false;
@@ -26,15 +25,13 @@ export class ToDoListItemComponent {
     return this.item.status === TodoItemStatus.COMPLETED
   }
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
   }
 
   deleteItem(id: number) {
     this.deleteItemEvent.emit(id)
-  }
-
-  selectItem(id: number) {
-    this.itemSelected.emit(id)
   }
 
   @HostBinding('style.selected')

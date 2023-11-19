@@ -20,6 +20,9 @@ import { FilterPanelComponent } from './components/filter-panel/filter-panel.com
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoCreateItemComponent } from './components/todo-create-item/todo-create-item.component';
+import { RouterOutlet } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { TodoItemViewComponent } from './components/todo-item-view/todo-item-view.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { TodoCreateItemComponent } from './components/todo-create-item/todo-crea
     ToDoListItemComponent,
     FilterPanelComponent,
     TodoCreateItemComponent,
+    TodoItemViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { TodoCreateItemComponent } from './components/todo-create-item/todo-crea
     MatSelectModule,
     HttpClientModule,
     ReactiveFormsModule,
+    RouterOutlet,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

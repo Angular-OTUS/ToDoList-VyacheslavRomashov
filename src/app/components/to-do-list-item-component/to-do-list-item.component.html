@@ -1,4 +1,4 @@
-<mat-list-item (click)="selectItem(item.id)" [class.selected]="isItemSelected" [appTooltip]="item.description">
+<mat-list-item [class.selected]="isItemSelected" [appTooltip]="item.description">
     <mat-checkbox (change)="changeStatus($event)" [checked]="isChecked"></mat-checkbox>
     <span *ngIf="!onEdit" (dblclick)="onDblClick()">{{item.text}}</span>
     <ng-container *ngIf="onEdit">
