@@ -13,8 +13,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class TodoListComponent implements OnInit {
   public value = '';
 
-  public selectedItemId?: number;
-
   public isLoading = true;
 
   allItems: ToDoListItems = [];
@@ -51,10 +49,5 @@ export class TodoListComponent implements OnInit {
 
   deleteItem(event: number) {
     this.todoService.deleteItem(event);
-  }
-
-  onItemClick(item: ToDoListItem) {
-    this.selectedItemId = item.id;
-    this.router.navigate(['/tasks', item.id]);
   }
 }

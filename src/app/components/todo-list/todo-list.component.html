@@ -13,8 +13,7 @@
                                 [item]="item"
                                 (itemEdited)="onItemEdited($event)"
                                 (deleteItemEvent)="deleteItem($event)"
-                                [selectedItemId]="selectedItemId"
-                                (click)="onItemClick(item)">
+                                [selectedItemId]="item.id">
                         </app-to-do-list-item>
                     </ng-container>
                 </ng-container>
