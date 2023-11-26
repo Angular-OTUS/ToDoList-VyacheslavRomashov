@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoAdd, ToDoListItem, ToDoListItems } from '../models';
+import { ToDoListItem, ToDoListItems } from '../../shared/models';
 import { TodoService } from '../../services/todo.services';
 import { ToastService } from '../../services/toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -39,12 +39,8 @@ export class TodoListComponent implements OnInit {
     this.todoService.editItem(item);
   }
 
-  statusSelected(status: string | null) {
-    this.todoService.filterList(status)
-  }
-
-  addItem(event: TodoAdd) {
-   this.todoService.addItem(event);
+  onItemClick(item: ToDoListItem) {
+    this.router.navigate([`/backlog/${item.id}`], {relativeTo: this.activatedRoute});
   }
 
   deleteItem(event: number) {

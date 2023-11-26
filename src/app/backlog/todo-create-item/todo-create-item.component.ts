@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
-import { TodoAdd, TodoItemStatus } from '../models';
+import { TodoAdd, TodoItemStatus } from '../../shared/models';
 
 
 @Component({

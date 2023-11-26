@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,27 +11,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import { ToDoListItemComponent } from './components/to-do-list-item-component/to-do-list-item.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from './shared/shared.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FilterPanelComponent } from './components/filter-panel/filter-panel.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoCreateItemComponent } from './components/todo-create-item/todo-create-item.component';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { TodoItemViewComponent } from './components/todo-item-view/todo-item-view.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BoardModule } from './board/board.module';
+import { BacklogModule } from './backlog/backlog.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent,
-    ToDoListItemComponent,
-    ToDoListItemComponent,
     FilterPanelComponent,
-    TodoCreateItemComponent,
-    TodoItemViewComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +48,8 @@ import { TodoItemViewComponent } from './components/todo-item-view/todo-item-vie
     ReactiveFormsModule,
     RouterOutlet,
     AppRoutingModule,
+    BacklogModule,
+    BoardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TodoAdd, ToDoListItem, ToDoListItems } from '../components/models';
+import { TodoAdd, ToDoListItem, ToDoListItems } from '../shared/models';
 import { ToastService } from './toast.service';
 import { ApiService } from './api.service';
 import { BehaviorSubject, map } from 'rxjs';

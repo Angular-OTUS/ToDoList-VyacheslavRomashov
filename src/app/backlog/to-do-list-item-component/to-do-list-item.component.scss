@@ -10,6 +10,9 @@ mat-list-item {
     margin: 1px;
   }
 }
+mat-list-item:hover {
+  cursor:pointer;
+}
 .selected {
   background-color: rgba(56,156,104,0.18);
 }

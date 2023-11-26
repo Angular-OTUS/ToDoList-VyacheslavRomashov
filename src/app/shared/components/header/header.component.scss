@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  height: 30px;
+  background-color: #222836;
+  margin-left: 220px;
+  color:white;
+
+  h1 {
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 600;
+    color: #fff;
+    margin-left: 30px;
+  }
+}

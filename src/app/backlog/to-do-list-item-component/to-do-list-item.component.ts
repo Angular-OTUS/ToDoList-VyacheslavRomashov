@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { TodoItemStatus, ToDoListItem } from '../models';
+import { TodoItemStatus, ToDoListItem } from '../../shared/models';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ToDoListItemComponent {
 
   @Input() public item!: ToDoListItem;
+
+  @Input() public isView = false;
 
   @Input() public selectedItemId?: number;
 
@@ -41,11 +43,6 @@ export class ToDoListItemComponent {
 
   onDblClick() {
     this.onEdit = true;
-  }
-
-  onSaveItem() {
-    this.itemEdited.next(this.item);
-    this.onEdit = false;
   }
 
   changeStatus(event: MatCheckboxChange) {

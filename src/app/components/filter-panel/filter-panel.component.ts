@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FilterPanelItems, TodoItemStatus } from '../models';
+import { FilterPanelItems, TodoItemStatus } from '../../shared/models';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({
