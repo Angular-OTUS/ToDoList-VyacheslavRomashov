@@ -1,0 +1,7 @@
+<div>
+    <mat-select placeholder="Статус" (selectionChange)="changeFilter($event)">
+        <ng-container *ngFor="let filterItem of statusFilterList">
+            <mat-option [value]="filterItem.id">{{filterItem.name}}</mat-option>
+        </ng-container>
+    </mat-select>
+</div>

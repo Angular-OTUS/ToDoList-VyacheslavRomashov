@@ -1,0 +1,31 @@
+<app-header [title]="'Backlog'"></app-header>
+<div class="flex">
+    <div class="todo-container">
+        <mat-list class="mat-list">
+
+            <ng-container [ngSwitch]="isLoading">
+                <mat-spinner *ngSwitchCase="true"></mat-spinner>
+
+                <ng-container *ngSwitchCase="false">
+                    <ng-container *ngFor="let item of allItems">
+                        <app-to-do-list-item
+                                (click)="onItemClick(item)"
+                                [item]="item"
+                                (itemEdited)="onItemEdited($event)"
+                                (deleteItemEvent)="deleteItem($event)"
+                                [selectedItemId]="item.id">
+                        </app-to-do-list-item>
+                    </ng-container>
+                </ng-container>
+
+            </ng-container>
+        </mat-list>
+
+    </div>
+
+    <div class="backlog">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<app-toast></app-toast>

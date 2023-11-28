@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-y: hidden;}
+
+.button {
+  color: white !important;
+
+  &:disabled {
+    opacity: 0.5 !important;
+  }
+  &-add {
+    background-color: #66bb6a !important;
+  }
+  &-delete {
+    background-color: #ef5350 !important;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+  border-radius: 5px;
+  button {
+    margin-right: 7px !important;
+  }
+}
+
+.sidebar {
+  margin-left: 275px;
+  margin-top: 30px;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+::-webkit-scrollbar {
+  width: 8px;               /* ширина scrollbar */
+}
+::-webkit-scrollbar-thumb {
+  background-color: gray;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+}
+
+.mdc-button {
+  min-width: 32px !important;
+}
+
+.flex {
+  display: flex;
+  margin-left:220px;
+}
+
+.todo-container {
+  width: 20%;
+
+  overflow: auto;
+  max-height: 93vh;
+  padding: 6px;
+}
+
+.todo-container:not(:nth-child(1)) {
+  margin-left: 10px;
+}

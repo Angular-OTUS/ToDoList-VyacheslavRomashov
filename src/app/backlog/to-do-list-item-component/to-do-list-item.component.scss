@@ -1,0 +1,29 @@
+mat-list-item {
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 7px;
+
+  app-button {
+    float: right;
+    margin: 1px;
+  }
+}
+mat-list-item:hover {
+  cursor:pointer;
+}
+.selected {
+  background-color: rgba(56,156,104,0.18);
+}
+
+.editInput {
+  width: 50%;
+  border: unset;
+  height: 40px;
+  background-color: var(--mdc-filled-text-field-container-color);
+}
+
+.editButton {
+  margin-left: 5px;
+}

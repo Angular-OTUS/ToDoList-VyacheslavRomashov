@@ -1,0 +1,16 @@
+<form [formGroup]="addForm">
+<mat-form-field>
+    <mat-label>Add your new task</mat-label>
+    <input matInput type="text" formControlName="text">
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Add your new description</mat-label>
+    <textarea matInput type="text" formControlName="description"></textarea>
+    <button [disabled]="isDisabledButton" matSuffix mat-raised-button aria-label="Add" class="button button-add"
+            [appTooltip]="'Add'"
+            (click)="addItem()">
+        Add
+    </button>
+</mat-form-field>
+</form>
