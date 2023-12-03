@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="ru-RU" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3391189587863333187" datatype="html">
+        <source>Описание: </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/backlog/todo-item-view/todo-item-view.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8681793891983971203" datatype="html">
+        <source>Все</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/board/board-component/board.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4778557998688389650" datatype="html">
+        <source>В работе</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/board/board-component/board.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7893539637235522536" datatype="html">
+        <source>Выполнено</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/board/board-component/board.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3198937660400400559" datatype="html">
+        <source>Статус</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/filter-panel/filter-panel.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

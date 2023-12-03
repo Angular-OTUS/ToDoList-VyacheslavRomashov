@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FilterPanelItems, TodoItemStatus } from '../../shared/models';
+import { FilterPanelItems, localizedStatus, TodoItemStatus } from '../../shared/models';
 import { MatSelectChange } from '@angular/material/select';
 
 @Component({
@@ -11,9 +11,9 @@ export class FilterPanelComponent {
   @Output() statusSelected: EventEmitter<string | null> = new EventEmitter<string | null>();
 
   statusFilterList: FilterPanelItems = [
-    {id: null, name: TodoItemStatus.ALL},
-    {id: TodoItemStatus.IN_PROGRESS, name: TodoItemStatus.IN_PROGRESS},
-    {id: TodoItemStatus.COMPLETED, name: TodoItemStatus.COMPLETED},
+    {id: null, name: localizedStatus(TodoItemStatus.ALL)},
+    {id: TodoItemStatus.IN_PROGRESS, name: localizedStatus(TodoItemStatus.IN_PROGRESS)},
+    {id: TodoItemStatus.COMPLETED, name: localizedStatus(TodoItemStatus.COMPLETED)},
   ]
 
   changeFilter(event: MatSelectChange) {
