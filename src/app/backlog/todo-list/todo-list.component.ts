@@ -27,7 +27,6 @@ export class TodoListComponent implements OnInit {
     this.todoService.getAllItems();
     this.todoService.allItems$.subscribe((items) => {
       this.allItems = items;
-      this.allItems.forEach((item) => this.toastService.showToast(item.text))
     })
     setTimeout(() => {
       this.isLoading = false

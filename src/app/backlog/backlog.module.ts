@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,6 +34,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatCheckboxModule,
     MatInputModule,
     MatButtonModule,
+    FormsModule,
   ],
   exports: [
     ToDoListItemComponent,

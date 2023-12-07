@@ -2,7 +2,6 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { TodoItemStatus, ToDoListItem } from '../../shared/models';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ApiService } from '../../services/api.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-to-do-list-item',
@@ -27,9 +26,7 @@ export class ToDoListItemComponent {
     return this.item.status === TodoItemStatus.COMPLETED
   }
 
-  constructor(private apiService: ApiService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) {
+  constructor(private apiService: ApiService) {
   }
 
   deleteItem(id: number) {
@@ -43,6 +40,7 @@ export class ToDoListItemComponent {
 
   onDblClick() {
     this.onEdit = true;
+    this.isView = true;
   }
 
   changeStatus(event: MatCheckboxChange) {
@@ -50,5 +48,10 @@ export class ToDoListItemComponent {
     this.apiService.changeStatus(this.item.id, status).subscribe((data => {
       data.status = status;
     }));
+  }
+
+  onSaveItem() {
+    this.itemEdited.next(this.item);
+    this.onEdit = false;
   }
 }
