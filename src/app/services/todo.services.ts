@@ -23,7 +23,7 @@ export class TodoService {
     return this.apiService.postItem(event).subscribe( {
       next: () => {
         this.getAllItems();
-        this.toastService.showToast([event.text]);
+        this.toastService.showToast(event.text);
       },
     })
   }
@@ -40,7 +40,7 @@ export class TodoService {
     return this.apiService.putItem(item).subscribe({
       next: () => {
         this.getAllItems();
-        this.toastService.showToast([item.text]);
+        this.toastService.showToast(item.text);
       },
     })
   }

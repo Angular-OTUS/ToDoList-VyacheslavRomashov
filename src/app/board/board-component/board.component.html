@@ -1,7 +1,7 @@
 <app-header [title]="'Board'"></app-header>
 <div class="flex">
     <div class="todo-container todo-items">
-        <h2>ALL</h2>
+        <h2  i18n>Все</h2>
     <mat-list class="mat-list">
         <ng-container *ngFor="let item of tasks">
             <app-to-do-list-item
@@ -14,7 +14,7 @@
     </div>
 
     <div class="todo-container todo-items">
-        <h2>IN PROGRESS</h2>
+        <h2  i18n>В работе</h2>
     <mat-list class="mat-list">
         <ng-container *ngFor="let item of tasks">
             <app-to-do-list-item *ngIf="item.status === 'InProgress'"
@@ -27,7 +27,7 @@
     </div>
 
     <div class="todo-container todo-items">
-        <h2>DONE</h2>
+        <h2 i18n>Выполнено</h2>
     <mat-list class="mat-list">
         <ng-container *ngFor="let item of tasks">
             <app-to-do-list-item *ngIf="item.status === 'Completed'"

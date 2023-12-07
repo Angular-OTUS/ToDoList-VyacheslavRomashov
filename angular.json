@@ -10,6 +10,12 @@
           "style": "scss"
         }
       },
+      "i18n": {
+        "sourceLocale": "ru-RU",
+        "locales": {
+          "en": "src/i18n/en-EN.xlf"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,6 +23,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
+            "i18nMissingTranslation": "error",
             "outputPath": "dist/todolist",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -57,7 +65,11 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "localize": false
+            },
+            "en": {
+              "localize": ["en"]
             }
           },
           "defaultConfiguration": "production"
@@ -70,6 +82,9 @@
             },
             "development": {
               "browserTarget": "todolist:build:development"
+            },
+            "development-en": {
+              "browserTarget": "todolist:build:development,en"
             }
           },
           "defaultConfiguration": "development"

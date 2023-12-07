@@ -1,3 +1,5 @@
+import { $localize } from '@angular/localize/init';
+
 export type ToDoListItem = {
   id: number,
   text: string,
@@ -13,6 +15,15 @@ export enum TodoItemStatus {
   IN_PROGRESS = 'InProgress',
   COMPLETED = 'Completed',
   ALL = 'ALL',
+}
+
+export function localizedStatus(state: TodoItemStatus) {
+ const statusReadable: {[status in TodoItemStatus]:string} = {
+   [TodoItemStatus.IN_PROGRESS]: $localize `key|In Progress`,
+   [TodoItemStatus.COMPLETED]: $localize `key|Completed`,
+   [TodoItemStatus.ALL]: $localize `key|ALL`,
+ }
+ return statusReadable[state]
 }
 
 export type FilterPanelItem = {
